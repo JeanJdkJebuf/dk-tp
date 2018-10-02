@@ -30,8 +30,7 @@ icone = pygame.image.load(image_icone).convert()
 fen.blit(icone,place_icone)
 #nom de la fenetre principale
 pygame.display.set_caption(titre_fenetre)
-#raffraichissement d'écran pour afficher l'image principale
-pygame.display.flip()
+
 
 
 ######################################################################################
@@ -39,6 +38,11 @@ pygame.display.flip()
 ######################################################################################
 #boucle principale
 while continuer_principale :
+    #raffraichissement d'écran pour afficher l'image principale
+    pygame.display.flip()
+    #raffraichissment de la boucle à 30ms
+    pygame.time.Clock().tick(30)
+    #Fermeture de la boucle principale
     for event in pygame.event.get() :
-        if event.type == pygame.QUIT :
+        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_q :
             continuer_principale=0
