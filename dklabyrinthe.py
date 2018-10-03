@@ -13,6 +13,7 @@
 from constantes import *
 import classes
 import pygame
+import fonction
 
 ######################################################################################
 #initialisation de pygame
@@ -31,6 +32,8 @@ fen.blit(icone,place_icone)
 #nom de la fenetre principale
 pygame.display.set_caption(titre_fenetre)
 
+#fond d'écran du jeu
+ecran = pygame.image.load(fond_ecran).convert()
 
 
 ######################################################################################
@@ -42,7 +45,18 @@ while continuer_principale :
     pygame.display.flip()
     #raffraichissment de la boucle à 30ms
     pygame.time.Clock().tick(30)
-    #Fermeture de la boucle principale
+
+    #event
     for event in pygame.event.get() :
-        if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_q :
+        #création du premier niveau
+        if fonction.keypressed(pygame.K_F1,event) :
+            fen.blit(ecran, place_icone)
+        #création du second niveau
+        if fonction.keypressed(pygame.K_F2,event) :
+            fen.blit(ecran, place_icone)
+        #retour à la boucle principale
+        if fonction.keypressed(pygame.K_q,event) :
+            fen.blit(icone,place_icone)
+        #quitter le jeu avec alt + F4 ou croix rouge
+        if event.type == pygame.QUIT :
             continuer_principale=0
