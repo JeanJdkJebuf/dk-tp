@@ -8,7 +8,11 @@
 #dimensions de la fenêtre principale ( c'est un carré )
 cote_fenetre=450
 #compteur qui ferme le jeu
-continuer_principale=1
+continuer_principale=True
+#lancement du jeu
+game=False
+#boucle de l'écran
+ecran=True
 
 ######################################################################################
 #constante représentant l'image principale
@@ -21,3 +25,11 @@ place_icone=(0,0)
 ######################################################################################
 #écran de jeu
 fond_ecran="fond.jpg"
+
+#donkey kong
+dk_droite="dk_droite.png"
+dk_gauche="dk_gauche.png"
+dk_bas="dk_bas.png"
+dk_haut="dk_haut.png"
+#position de donkey kong au début
+posit=(0,0)
