@@ -23,20 +23,34 @@ class mouvement(object) :
         "mouvement de dk"
         #dk descend
         if fonction.keypressed(pygame.K_DOWN, event) :
-            self.position=(self.position[0],self.position[1]+30,1)
-            return self.position
+            if  self.position[1]+30>=450 :
+                return self.position
+            else :
+                self.position=(self.position[0],self.position[1]+30,1)
+                return self.position
+            
         #dk remonte
         if fonction.keypressed(pygame.K_UP, event) :
-            self.position=(self.position[0],self.position[1]-30,2)
-            return self.position
+            if self.position[1]-30<0 :
+                return self.position
+            else :
+                self.position=(self.position[0],self.position[1]-30,2)
+                return self.position
+
         #dk droite
         if fonction.keypressed(pygame.K_RIGHT, event) :
-            self.position=(self.position[0]+30,self.position[1],3)
-            return self.position
+            if self.position[0]+30>=450 :
+                return self.position
+            else :
+                self.position=(self.position[0]+30,self.position[1],3)
+                return self.position
         #dk gauche
         if fonction.keypressed(pygame.K_LEFT, event) :
-            self.position=(self.position[0]-30,self.position[1],4)
-            return self.position
+            if self.position[0] == 0 :
+                return self.position
+            else :
+                self.position=(self.position[0]-30,self.position[1],4)
+                return self.position
     
     #permet de repositionner donkey ( son skin)
     
