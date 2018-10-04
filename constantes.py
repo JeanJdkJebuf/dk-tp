@@ -26,6 +26,7 @@ place_icone=(0,0)
 #écran de jeu
 fond_ecran="fond.jpg"
 
+
 #donkey kong
 dk_droite="dk_droite.png"
 dk_gauche="dk_gauche.png"
