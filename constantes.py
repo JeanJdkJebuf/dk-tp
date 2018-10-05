@@ -16,28 +16,28 @@ ecran=True
 
 ######################################################################################
 #constante représentant l'image principale
-image_icone="accueil.png"
+image_icone="images/accueil.png"
 #nom de la fenetre principale 
-titre_fenetre="Donkey Kong Labyrinthe"
+titre_fenetre="images/Donkey Kong Labyrinthe"
 #positionnement de la fenetre principale et du fond d'écran de jeu
 place_icone=(0,0)
 
 ######################################################################################
 #écran de jeu
-fond_ecran="fond.jpg"
+fond_ecran="images/fond.jpg"
 #mur
-mur="mur.png"
+mur="images/mur.png"
 #départ
-depart="depart.png"
+depart="images/depart.png"
 #arrivée
-arrivee="arrivee.png"
+arrivee="images/arrivee.png"
 
 
 #donkey kong
-dk_droite="dk_droite.png"
-dk_gauche="dk_gauche.png"
-dk_bas="dk_bas.png"
-dk_haut="dk_haut.png"
+dk_droite="images/dk_droite.png"
+dk_gauche="images/dk_gauche.png"
+dk_bas="images/dk_bas.png"
+dk_haut="images/dk_haut.png"
 #position de donkey kong au début
 posit=(0,0)
 #position de l'arrivée
