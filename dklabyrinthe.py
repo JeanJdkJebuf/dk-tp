@@ -34,21 +34,6 @@ pygame.display.set_caption(titre_fenetre)
 #fond d'écran du jeu
 ecran = pygame.image.load(fond_ecran).convert()
 
-#chargement du skin de départ de dk ( droite)
-dkd= pygame.image.load(dk_droite).convert_alpha()
-#chargement du skin de départ de dk ( gauche)
-dkg= pygame.image.load(dk_gauche).convert_alpha()
-#chargement du skin de départ de dk ( haut)
-dkh= pygame.image.load(dk_haut).convert_alpha()
-#chargement du skin de départ de dk ( bas)
-dkb= pygame.image.load(dk_bas).convert_alpha()
-
-def tourne(x):
-        #liste des valeurs à retourner avec 0 valeur nulle
-        liste=[0,dkb,dkh,dkd,dkg]
-        #renvoie le skin à update
-        return liste[x]
-
 ######################################################################################
 #Boucle
 #######################################################################################
@@ -67,7 +52,7 @@ while continuer_principale :
     #chargement de la classe mouvement avec une position de départ
     dk=classes.mouvement(position=dkpos)
     #regard de donkey
-    regard=tourne(dkpos[2])
+    regard=dk.tourne(dkpos[2])
 
     #évènements
     for event in pygame.event.get() :
@@ -118,13 +103,13 @@ while continuer_principale :
             #faire bouger donkey kong
             if event.type == pygame.KEYDOWN :
                 #evenements
-                if event.key == pygame.K_DOWN or event.key== pygame.K_UP or event.key==pygame.K_RIGHT or event.key==pygame.K_LEFT :
+                if event.key in liste_croix_move :
                     #tuple qui remplace les valeurs
                     tupdonkey=dk.move(event)
                     #update du tuple liées au skin de donkey
                     dkpos=(tupdonkey[0],tupdonkey[1])
                     #position de donkey update
-                    regard=tourne(tupdonkey[2])
+                    regard=dk.tourne(tupdonkey[2])
             
             
             #revenir au niveau principal
@@ -132,6 +117,6 @@ while continuer_principale :
                 game= False
             
             #si donkey atteinte les bananes, retour au niveau principal
-            if dkpos == (420,420):
+            if dkpos == end :
                 game = False
                 

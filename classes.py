@@ -68,7 +68,18 @@ class mouvement(object) :
                 self.position=(self.position[0]-30,self.position[1],4)
                 return self.position
         
-
+    def tourne(self, x):
+        #chargement du skin de départ de dk ( droite)
+        dkd= pygame.image.load(dk_droite).convert_alpha()
+        #chargement du skin de départ de dk ( gauche)
+        dkg= pygame.image.load(dk_gauche).convert_alpha()
+        #chargement du skin de départ de dk ( haut)
+        dkh= pygame.image.load(dk_haut).convert_alpha()
+        #chargement du skin de départ de dk ( bas)
+        dkb= pygame.image.load(dk_bas).convert_alpha()
+        liste=[0,dkb,dkh,dkd,dkg]
+        #renvoie le skin à update
+        return liste[x]
 
 #classe qui permet de générer le niveau
 class level(object) :
