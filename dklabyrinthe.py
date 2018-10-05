@@ -81,8 +81,13 @@ while continuer_principale :
             if event.key==pygame.K_F2 :
                 obj_lev=classes.level("n2.json")
                 obj_lev.creer_une_liste()
+                
             #modification de la variable jeu
             game=True
+            #création de la liste pour le mouvement
+            #Ajout de la liste de tuples pour les murs
+            #pour ainsi instancier les déplacements
+            dk.recup(obj_lev.murs())
             
 
         #fonction qui fait quitter le programme    
@@ -116,11 +121,17 @@ while continuer_principale :
                 if event.key == pygame.K_DOWN or event.key== pygame.K_UP or event.key==pygame.K_RIGHT or event.key==pygame.K_LEFT :
                     #tuple qui remplace les valeurs
                     tupdonkey=dk.move(event)
+                    #update du tuple liées au skin de donkey
                     dkpos=(tupdonkey[0],tupdonkey[1])
+                    #position de donkey update
                     regard=tourne(tupdonkey[2])
             
             
-            #pour quitter la boucle
+            #revenir au niveau principal
             if fonction.keypressed(pygame.K_q , event) :
                 game= False
+            
+            #si donkey atteinte les bananes, retour au niveau principal
+            if dkpos == (420,420):
+                game = False
                 

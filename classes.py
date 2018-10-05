@@ -16,9 +16,15 @@ class mouvement(object) :
         self.pos=pos
         #position
         self.position=position
-        #position en carrés ( à compléter )
-        #à combiner avec le fichier de niveaux pour voir si déplacement possible ou non )
-        #self.carre=carre
+        #position en carrés
+        self.carre=[]
+    
+    #fonction qui récupère la liste de la classe level.murs()
+    def recup(self, liste) :
+        #récupération des valeurs de la liste dans self.carre
+        for x in liste :
+            self.carre.append(x)
+        
 
     #permet de faire bouger donkey
     def move(self,event) :
@@ -26,6 +32,8 @@ class mouvement(object) :
         #dk descend
         if fonction.keypressed(pygame.K_DOWN, event) :
             if  self.position[1]+30>=450 :
+                return self.position
+            if  (self.position[0],self.position[1]+30) in self.carre :
                 return self.position
             else :
                 self.position=(self.position[0],self.position[1]+30,1)
@@ -35,6 +43,8 @@ class mouvement(object) :
         if fonction.keypressed(pygame.K_UP, event) :
             if self.position[1]-30<0 :
                 return self.position
+            if  (self.position[0],self.position[1]-30) in self.carre :
+                return self.position
             else :
                 self.position=(self.position[0],self.position[1]-30,2)
                 return self.position
@@ -43,6 +53,8 @@ class mouvement(object) :
         if fonction.keypressed(pygame.K_RIGHT, event) :
             if self.position[0]+30>=450 :
                 return self.position
+            if  (self.position[0]+30,self.position[1]) in self.carre :
+                return self.position
             else :
                 self.position=(self.position[0]+30,self.position[1],3)
                 return self.position
@@ -50,10 +62,14 @@ class mouvement(object) :
         if fonction.keypressed(pygame.K_LEFT, event) :
             if self.position[0] == 0 :
                 return self.position
+            if  (self.position[0]-30,self.position[1]) in self.carre :
+                return self.position
             else :
                 self.position=(self.position[0]-30,self.position[1],4)
                 return self.position
-    
+        
+
+
 #classe qui permet de générer le niveau
 class level(object) :
     "cette classe permet de générer un niveau"
@@ -88,3 +104,16 @@ class level(object) :
                 #ajout des murs
                 if self.liste[ligne][car] == "m" :
                     fenetre.blit(dkmur,(car*30,ligne*30))
+
+    #fonction renvoie les tuples des murs
+    def murs(self):
+        #variable locale : murs
+        murs=[]
+        #conversion de niveau en une liste de tuples
+        for ligne in range(len(self.liste)) :
+            #pour chaque caractère dans la ligne
+            for car in range(len(self.liste[ligne])) :
+                #ajout du départ
+                if self.liste[ligne][car] == "m" :
+                    murs.append((car*30,ligne*30))
+        return murs
