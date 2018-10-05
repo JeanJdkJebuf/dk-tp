@@ -1,6 +1,6 @@
 #importation des modules
 import pygame
-
+import json
 import constantes
 #création de la fenetre de jeu
 def keypressed(touche, event):

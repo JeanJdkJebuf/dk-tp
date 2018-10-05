@@ -1,14 +1,16 @@
 ######################################################################################
 #               classes pour le jeu dklabyrinthe
 ######################################################################################
-import constantes
+from constantes import *
 import fonction
 import pygame
+import json
+
 
 #classe du personnage (déplacement )
 class mouvement(object) :
     "cette classe permet le mouvement de donkey kong"
-    def __init__(self,pos=constantes.dk_droite,position=(0,0)) :
+    def __init__(self,pos=dk_droite,position=(0,0)) :
         "les variables de classe"
         #pose de donkey        
         self.pos=pos
@@ -52,5 +54,37 @@ class mouvement(object) :
                 self.position=(self.position[0]-30,self.position[1],4)
                 return self.position
     
-    #permet de repositionner donkey ( son skin)
-    
+#classe qui permet de générer le niveau
+class level(object) :
+    "cette classe permet de générer un niveau"
+    def __init__(self,niveau) :
+        #niveau à générer
+        self.niveau=niveau
+        self.liste=[]
+
+    #Cette fonction retourne la liste de data2.json ( clé correspondante : key )
+    def creer_une_liste(self):
+        with open(self.niveau) as f:
+            data = json.load(f)
+            self.liste=data.get("liste")
+        
+
+    #cette fonction affiche les murs 
+    def affiche(self,fenetre) :
+        "cette fonction affiche les murs"
+        #images à coller
+        dkmur=pygame.image.load(mur).convert_alpha()
+        dkarrivee=pygame.image.load(arrivee).convert_alpha()
+        dkdepart=pygame.image.load(depart).convert_alpha()
+        for ligne in range(len(self.liste)) :
+            #pour chaque caractère dans la ligne
+            for car in range(len(self.liste[ligne])) :
+                #ajout du départ
+                if self.liste[ligne][car] == "d" :
+                    fenetre.blit(dkdepart,(car*30,ligne*30))
+                #ajout de l'arrivée
+                if self.liste[ligne][car] == "a" :
+                    fenetre.blit(dkarrivee,(car*30,ligne*30))
+                #ajout des murs
+                if self.liste[ligne][car] == "m" :
+                    fenetre.blit(dkmur,(car*30,ligne*30))

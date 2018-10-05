@@ -25,6 +25,12 @@ place_icone=(0,0)
 ######################################################################################
 #écran de jeu
 fond_ecran="fond.jpg"
+#mur
+mur="mur.png"
+#départ
+depart="depart.png"
+#arrivée
+arrivee="arrivee.png"
 
 
 #donkey kong

@@ -73,6 +73,14 @@ while continuer_principale :
     for event in pygame.event.get() :
         #lancement des niveaux
         if fonction.keypressed(pygame.K_F1, event) or fonction.keypressed(pygame.K_F2, event) :
+            #lancement de l'objet niveau
+            if event.key==pygame.K_F1 :
+                obj_lev=classes.level("n1.json")
+                obj_lev.creer_une_liste()
+            
+            if event.key==pygame.K_F2 :
+                obj_lev=classes.level("n2.json")
+                obj_lev.creer_une_liste()
             #modification de la variable jeu
             game=True
             
@@ -89,6 +97,9 @@ while continuer_principale :
 
         #on colle l'écran de jeu
         fen.blit(ecran, place_icone)
+
+        #on colle les murs
+        obj_lev.affiche(fen)
 
         #coller le skin de donkey à l'écran
         fen.blit(regard, (dkpos[0],dkpos[1]))
