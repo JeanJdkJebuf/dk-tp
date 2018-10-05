@@ -42,8 +42,3 @@ dk_haut="dk_haut.png"
 posit=(0,0)
 #position de l'arrivée
 end=(420,420)
-
-
-#######################################################################################
-#liste des déplacements
-liste_croix_move=["pygame.K_DOWN","pygame.K_UP","pygame.K_RIGHT","pygame.K_LEFT"]

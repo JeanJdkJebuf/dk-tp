@@ -103,7 +103,7 @@ while continuer_principale :
             #faire bouger donkey kong
             if event.type == pygame.KEYDOWN :
                 #evenements
-                if event.key in liste_croix_move :
+                if event.key == pygame.K_DOWN or event.key== pygame.K_UP or event.key==pygame.K_RIGHT or event.key==pygame.K_LEFT :
                     #tuple qui remplace les valeurs
                     tupdonkey=dk.move(event)
                     #update du tuple liées au skin de donkey
